@@ -45,4 +45,9 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+    implementation("io.ktor:ktor-client-android:2.3.4")
+    implementation("io.ktor:ktor-client-content-negotiation:2.3.4")
+    implementation("io.ktor:ktor-client-serialization-jvm:2.3.4")
+    implementation("io.ktor:ktor-client-core-jvm:2.3.4")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.4.0")
 }

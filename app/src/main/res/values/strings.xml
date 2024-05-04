@@ -6,4 +6,7 @@
     <string name="nombre">Nombre de la reserva</string>
     <string name="deporte">Deporte</string>
     <string name="annadir_pista">Añadir Pista</string>
+    <string name="Verpista">Ver reserva</string>
+    <string name="tituloFormulario">Introduzca los datos de la reserva</string>
+    <string name="tituloFecha">Fecha de reserva</string>
 </resources>

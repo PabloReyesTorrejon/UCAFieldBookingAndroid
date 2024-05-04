@@ -12,7 +12,7 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="600dp"
+            android:layout_height="match_parent"
             android:padding="20dp">
 
             <TextView
@@ -33,11 +33,6 @@
                 android:textColor="@color/dark_gray"
                 android:textSize="16sp" />
 
-            <DatePicker
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_above="@id/textViewReservaDeporte"
-                android:layout_marginBottom="-483dp" />
 
             <TextView
                 android:id="@+id/textResponse"
@@ -53,13 +48,13 @@
                 app:layout_constraintTop_toBottomOf="@+id/buttonGet" />
 
             <Button
-                android:id="@+id/buttonAdopt"
+                android:id="@+id/buttonVerpista"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
                 android:backgroundTint="@color/colorPrimary"
-                android:text="@string/reservar"
+                android:text="@string/Verpista"
                 android:textColor="@color/black"
 
                 />

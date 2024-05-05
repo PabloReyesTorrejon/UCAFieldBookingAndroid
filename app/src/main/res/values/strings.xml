@@ -9,4 +9,5 @@
     <string name="Verpista">Ver reserva</string>
     <string name="tituloFormulario">Introduzca los datos de la reserva</string>
     <string name="tituloFecha">Fecha de reserva</string>
+    <string name="post">Añadir reserva</string>
 </resources>

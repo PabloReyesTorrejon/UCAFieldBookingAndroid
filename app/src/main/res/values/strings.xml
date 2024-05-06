@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">UCAFieldBookingAndroid</string>
+    <string name="Salas">¡Elige una pista!</string>
+    <string name="get">GET</string>
+    <string name="reservar">Reservar</string>
+    <string name="nombre">Nombre de la reserva</string>
+    <string name="deporte">Deporte</string>
+    <string name="annadir_pista">Añadir Pista</string>
+    <string name="Verpista">Ver reserva</string>
+    <string name="tituloFormulario">Introduzca los datos de la reserva</string>
+    <string name="tituloFecha">Fecha de reserva</string>
+    <string name="post">Añadir reserva</string>
 </resources>

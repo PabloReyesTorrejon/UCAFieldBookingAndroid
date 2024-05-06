@@ -10,4 +10,7 @@
     <string name="tituloFormulario">Introduzca los datos de la reserva</string>
     <string name="tituloFecha">Fecha de reserva</string>
     <string name="post">Añadir reserva</string>
+    <string name="padel">Pádel</string>
+    <string name="img_padel">Pista de pádel</string>
+    <string name="datos">Texto de prueba</string>
 </resources>

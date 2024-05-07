@@ -40,7 +40,7 @@ class APIservicios {
 
     suspend fun getReservas(idsocio: String): HttpResponse {
         // Obtiene la respuesta HTTP como antes
-        val response = client.get("http://10.0.2.2:3000/persona/$idsocio")
+        val response = client.get("http://10.0.2.2:3000/reservas/$idsocio")
         return response
     }
 

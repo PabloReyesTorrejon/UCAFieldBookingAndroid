@@ -42,7 +42,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         reservas.setOnClickListener{
-            redirectActivity(this@MainActivity, AnnadirReserva::class.java)
+            redirectActivity(this@MainActivity, Reservas::class.java)
         }
 
         local.setOnClickListener{

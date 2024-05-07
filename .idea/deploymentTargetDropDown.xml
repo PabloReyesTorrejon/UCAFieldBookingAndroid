@@ -2,6 +2,12 @@
 <project version="4">
   <component name="deploymentTargetDropDown">
     <value>
+      <entry key="AnnadirReserva">
+        <State />
+      </entry>
+      <entry key="Reservas">
+        <State />
+      </entry>
       <entry key="Salas">
         <State />
       </entry>

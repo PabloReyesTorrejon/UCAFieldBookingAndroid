@@ -41,7 +41,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
             android:hint="Identificador de socio"
-            android:inputType="text" />
+            android:inputType="number" />
 
         <EditText
             android:id="@+id/editTextEmail"
@@ -51,7 +51,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
             android:hint="e-mail"
-            android:inputType="text" />
+            android:inputType="textEmailAddress" />
 
         <TextView
             android:id="@+id/textViewFecha"
@@ -88,7 +88,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
             android:hint="Número de asistentes"
-            android:inputType="text" />
+            android:inputType="number" />
 
         <Button
             android:id="@+id/buttonPost"

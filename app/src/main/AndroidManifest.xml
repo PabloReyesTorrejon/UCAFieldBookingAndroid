@@ -13,8 +13,13 @@
         android:theme="@style/Theme.UCAFieldBookingAndroid"
         tools:targetApi="31">
         <activity
+            android:name=".Reservas"
+            android:exported="true" />
+        <activity android:name=".AnnadirReserva"
+            android:exported="true"/>
+        <activity
             android:name=".Salas"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
@@ -24,6 +29,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+
     </application>
 
 </manifest>

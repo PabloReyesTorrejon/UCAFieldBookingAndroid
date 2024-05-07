@@ -13,4 +13,9 @@
     <string name="padel">Pádel</string>
     <string name="img_padel">Pista de pádel</string>
     <string name="datos">Texto de prueba</string>
+    <string name="postReserva">Consultar reservas</string>
+    <string name="idsocio_pista">Introduce tu ID de socio</string>
+    <string name="tituloHora">Hora</string>
+    <string name="tituloAsistentes">Asistentes</string>
+    <string name="tituloComentario">Comentario</string>
 </resources>

@@ -89,6 +89,15 @@
             android:layout_marginEnd="16dp"
             android:hint="Número de asistentes"
             android:inputType="number" />
+        <EditText
+            android:id="@+id/editTextComentario"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:hint="Comentario adicional"
+            android:inputType="number" />
 
         <Button
             android:id="@+id/buttonPost"

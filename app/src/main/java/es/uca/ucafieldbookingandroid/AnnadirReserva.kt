@@ -10,6 +10,7 @@ import android.widget.DatePicker
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.TimePicker
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
@@ -35,6 +36,7 @@ class AnnadirReserva : AppCompatActivity() {
         val dpFecha = findViewById<DatePicker>(R.id.dpFecha)
         val tpHora = findViewById<TimePicker>(R.id.tpFecha)
         val editTextAsistentes = findViewById<EditText>(R.id.editTextAsistentes)
+        val editTextComentario = findViewById<EditText>(R.id.editTextComentario)
         val textResponse = findViewById<TextView>(R.id.textResponse)
 
 
@@ -45,6 +47,7 @@ class AnnadirReserva : AppCompatActivity() {
             val idsocio = editTextIDsocio.text.toString().toIntOrNull()
             val email = editTextemail.text.toString()
             val asistentes = editTextAsistentes.text.toString().toIntOrNull()
+            val comentario = editTextComentario.text.toString()
 
             // Obtener fecha y hora seleccionadas por el usuario
             val selectedDate = Calendar.getInstance()
@@ -62,7 +65,7 @@ class AnnadirReserva : AppCompatActivity() {
             if (nombre.isNotEmpty() && idsocio != null && email.isNotEmpty() && asistentes != null && fechaFormateada.isNotEmpty() && horaFormateada.isNotEmpty()) {
                 lifecycleScope.launch(Dispatchers.IO) {
                     try {
-                        val response = apiServicios.createReserva(nombre, idsocio, email, fechaFormateada, horaFormateada, asistentes)
+                        val response = apiServicios.createReserva(nombre, idsocio, email, fechaFormateada, horaFormateada, asistentes, comentario)
                         launch(Dispatchers.Main) {
                             //Si queremos ver el texto en pantalla en lugar de con el Snackbar
                             //textResponse.text = response.bodyAsText()
@@ -77,6 +80,7 @@ class AnnadirReserva : AppCompatActivity() {
                         editTextIDsocio.setText("")
                         editTextemail.setText("")
                         editTextAsistentes.setText("")
+                        editTextComentario.setText("")
 
 
                         // Quitar el enfoque de cualquier vista que lo tenga
@@ -88,16 +92,16 @@ class AnnadirReserva : AppCompatActivity() {
 
                     } catch (e: ClientRequestException) {
                         launch(Dispatchers.Main) {
-                            textResponse.text = "Error: ${e.response.status.description}"
+                            mostrarToast("Error: ${e.response.status.description}")
                         }
                     } catch (e: Exception) {
                         launch(Dispatchers.Main) {
-                            textResponse.text = "Error: ${e.message}"
+                            mostrarToast("Error: ${e.message}")
                         }
                     }
                 }
             } else {
-                textResponse.text = "Por favor, completa todos los campos correctamente"
+                mostrarToast("Por favor, completa todos los campos correctamente")
             }
         }
 
@@ -109,5 +113,8 @@ class AnnadirReserva : AppCompatActivity() {
         runOnUiThread{
             view.clearFocus()
         }
+    }
+    fun mostrarToast(mensaje: String) {
+        Toast.makeText(this, mensaje, Toast.LENGTH_SHORT).show()
     }
 }

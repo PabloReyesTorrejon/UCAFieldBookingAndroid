@@ -1,5 +1,6 @@
 package es.uca.ucafieldbookingandroid
 
+import Reserva
 import android.content.Intent
 import android.os.Bundle
 import android.transition.TransitionManager
@@ -21,9 +22,12 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import io.ktor.client.call.body
 import io.ktor.client.call.receive
+import io.ktor.client.statement.bodyAsText
+import io.ktor.client.statement.readText
 import io.ktor.http.isSuccess
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.serialization.json.Json
 
 class Reservas : AppCompatActivity() {
     private val apiServicios = APIservicios()
@@ -51,8 +55,8 @@ class Reservas : AppCompatActivity() {
         recyclerView.layoutManager = LinearLayoutManager(this)
 
         buttonGet.setOnClickListener {
-            val idUsuario = editTextUserId.text.toString().toIntOrNull()
-            if (idUsuario != null) {
+            val idUsuario = editTextUserId.text.toString()
+            if (idUsuario.isNotEmpty()){
                 // Realiza la búsqueda de reservas con el ID de usuario ingresado
                 buscarReservas(idUsuario)
             } else {
@@ -62,26 +66,21 @@ class Reservas : AppCompatActivity() {
         }
     }
 
-    private fun buscarReservas(idUsuario: Number) {
+    private fun buscarReservas(idUsuario: String) {
         lifecycleScope.launch(Dispatchers.IO) {
             try {
-                val response = apiServicios.getReservas(idUsuario)
-                if (response.status.isSuccess()) {
-                    // Procesar la respuesta y llenar la lista de reservas
-                    val reservasJsonArray = response.body<List<Reserva>>()
+                Log.d("Reservas", "Iniciando solicitud de reservas")
+                val reservasJsonArray = apiServicios.getReservas(idUsuario)
 
-                    // Limpiar la lista antes de agregar las nuevas reservas
-                    reservas.clear()
-                    // Agregar cada reserva al adaptador
-                    reservas.addAll(reservasJsonArray)
+                // Limpiar la lista antes de agregar las nuevas reservas
+                reservas.clear()
+                // Agregar cada reserva al adaptador
+                reservas.addAll(reservasJsonArray)
 
-                    // Actualizar el RecyclerView con las nuevas reservas en el hilo principal
-                    runOnUiThread {
-                        adapter.notifyDataSetChanged()
-                    }
-                } else {
-                    // Procesamiento de la respuesta de error
-                    Toast.makeText(this@Reservas, "Usted no ha realizado ninguna reserva", Toast.LENGTH_SHORT).show()
+                // Actualizar el RecyclerView con las nuevas reservas en el hilo principal
+                runOnUiThread {
+                    Log.d("Reservas", "Actualizando RecyclerView")
+                    adapter.notifyDataSetChanged()
                 }
             } catch (e: Exception) {
                 // Manejo de errores

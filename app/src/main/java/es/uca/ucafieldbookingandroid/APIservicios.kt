@@ -22,13 +22,14 @@ class APIservicios {
         return client.get("http://10.0.2.2:3000/saludo/$name")
     }
 
-    suspend fun createReserva(nombre: String, idsocio: Int, email: String, fecha: String, hora: String, asistentes: Int, comentario: String): HttpResponse {
+    suspend fun createReserva(nombre: String, idsocio: Int, deporte: String, email: String, fecha: String, hora: String, asistentes: Int, comentario: String): HttpResponse {
 
         return client.submitForm(
             url = "http://"+IP_PORT+"/reservas/annadir_reserva",
             formParameters = Parameters.build {
-                append("idsocio", idsocio.toString())
                 append("nombre", nombre)
+                append("idsocio", idsocio.toString())
+                append("deporte", deporte)
                 append("email", email)
                 append("fecha", fecha)
                 append("hora", hora)
@@ -39,7 +40,7 @@ class APIservicios {
         )
     }
 
-    suspend fun getReservas(idsocio: String): HttpResponse {
+    suspend fun getReservas(idsocio: Number): HttpResponse {
         // Obtiene la respuesta HTTP como antes
         val response = client.get("http://"+IP_PORT+"/reservas/get_reserva/$idsocio")
         return response

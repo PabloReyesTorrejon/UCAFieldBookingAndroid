@@ -32,6 +32,7 @@ class AnnadirReserva : AppCompatActivity() {
         val buttonPost = findViewById<Button>(R.id.buttonPost)
         val editTextNombre = findViewById<EditText>(R.id.editTextNombre)
         val editTextIDsocio = findViewById<EditText>(R.id.editTextIDsocio)
+        val editTextDeporte = findViewById<EditText>(R.id.editTextDeporte)
         val editTextemail = findViewById<EditText>(R.id.editTextEmail)
         val dpFecha = findViewById<DatePicker>(R.id.dpFecha)
         val tpHora = findViewById<TimePicker>(R.id.tpFecha)
@@ -45,6 +46,7 @@ class AnnadirReserva : AppCompatActivity() {
         buttonPost.setOnClickListener {
             val nombre = editTextNombre.text.toString()
             val idsocio = editTextIDsocio.text.toString().toIntOrNull()
+            val deporte = editTextDeporte.text.toString()
             val email = editTextemail.text.toString()
             val asistentes = editTextAsistentes.text.toString().toIntOrNull()
             val comentario = editTextComentario.text.toString()
@@ -62,10 +64,10 @@ class AnnadirReserva : AppCompatActivity() {
             val fechaFormateada = dateFormat.format(selectedDate.time)
             val horaFormateada = timeFormat.format(selectedTime.time)
 
-            if (nombre.isNotEmpty() && idsocio != null && email.isNotEmpty() && asistentes != null && fechaFormateada.isNotEmpty() && horaFormateada.isNotEmpty()) {
+            if (nombre.isNotEmpty() && idsocio != null && deporte.isNotEmpty() && email.isNotEmpty() && asistentes != null && fechaFormateada.isNotEmpty() && horaFormateada.isNotEmpty()) {
                 lifecycleScope.launch(Dispatchers.IO) {
                     try {
-                        val response = apiServicios.createReserva(nombre, idsocio, email, fechaFormateada, horaFormateada, asistentes, comentario)
+                        val response = apiServicios.createReserva(nombre, idsocio, deporte, email, fechaFormateada, horaFormateada, asistentes, comentario)
                         launch(Dispatchers.Main) {
                             //Si queremos ver el texto en pantalla en lugar de con el Snackbar
                             //textResponse.text = response.bodyAsText()
@@ -78,6 +80,7 @@ class AnnadirReserva : AppCompatActivity() {
 
                         editTextNombre.setText("")
                         editTextIDsocio.setText("")
+                        editTextDeporte.setText("")
                         editTextemail.setText("")
                         editTextAsistentes.setText("")
                         editTextComentario.setText("")

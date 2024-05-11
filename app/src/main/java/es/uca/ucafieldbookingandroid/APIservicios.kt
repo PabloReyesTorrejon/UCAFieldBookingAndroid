@@ -13,6 +13,7 @@ import java.util.*
 
 class APIservicios {
     private val client = HttpClient(Android)
+    private val IP_PORT = "10.0.2.2:3000"
 
     // suspend indica que esta función es una función de suspensión, lo que
     // significa que puede hacer llamadas de red u otras operaciones de E/S
@@ -24,7 +25,7 @@ class APIservicios {
     suspend fun createReserva(nombre: String, idsocio: Int, email: String, fecha: String, hora: String, asistentes: Int, comentario: String): HttpResponse {
 
         return client.submitForm(
-            url = "http://10.0.2.2:3000/reservas/annadir_reserva",
+            url = "http://"+IP_PORT+"/reservas/annadir_reserva",
             formParameters = Parameters.build {
                 append("idsocio", idsocio.toString())
                 append("nombre", nombre)
@@ -40,7 +41,7 @@ class APIservicios {
 
     suspend fun getReservas(idsocio: String): HttpResponse {
         // Obtiene la respuesta HTTP como antes
-        val response = client.get("http://10.0.2.2:3000/reservas/$idsocio")
+        val response = client.get("http://"+IP_PORT+"/reservas/get_reserva/$idsocio")
         return response
     }
 

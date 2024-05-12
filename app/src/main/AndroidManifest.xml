@@ -30,6 +30,9 @@
         <activity
             android:name=".Salas"
             android:exported="false" />
+        <activity
+            android:name=".EditarReserva"
+            android:exported="false" />
 
 
 

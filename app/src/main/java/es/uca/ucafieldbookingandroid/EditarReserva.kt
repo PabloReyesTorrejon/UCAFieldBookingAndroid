@@ -110,11 +110,4 @@ class EditarReserva : AppCompatActivity() {
         }
 
     }
-    fun ocultarTecladoExplicitamente(view: View) {
-        val ocultar = getSystemService(Context.INPUT_METHOD_SERVICE) as? InputMethodManager
-        ocultar?.hideSoftInputFromWindow(view.windowToken, 0) ?: Log.e("MainActivity", "InputMethodManager no disponible")
-        runOnUiThread{
-            view.clearFocus()
-        }
-    }
 }

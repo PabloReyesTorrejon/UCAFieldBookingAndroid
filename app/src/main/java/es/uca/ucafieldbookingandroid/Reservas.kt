@@ -1,5 +1,6 @@
 package es.uca.ucafieldbookingandroid
 
+import Reserva
 import android.content.Intent
 import android.os.Bundle
 import android.transition.TransitionManager
@@ -21,9 +22,12 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import io.ktor.client.call.body
 import io.ktor.client.call.receive
+import io.ktor.client.statement.bodyAsText
+import io.ktor.client.statement.readText
 import io.ktor.http.isSuccess
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.serialization.json.Json
 
 class Reservas : AppCompatActivity() {
     private val apiServicios = APIservicios()
@@ -52,12 +56,35 @@ class Reservas : AppCompatActivity() {
 
         buttonGet.setOnClickListener {
             val idUsuario = editTextUserId.text.toString()
-            if (idUsuario.isNotEmpty()) {
+            if (idUsuario.isNotEmpty()){
                 // Realiza la búsqueda de reservas con el ID de usuario ingresado
                 buscarReservas(idUsuario)
             } else {
                 // Muestra un mensaje de error al usuario indicando que el campo está vacío
                 Toast.makeText(this, "Por favor, introduce un ID de usuario", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
+    private fun buscarReservas(idUsuario: String) {
+        lifecycleScope.launch(Dispatchers.IO) {
+            try {
+                Log.d("Reservas", "Iniciando solicitud de reservas")
+                val reservasJsonArray = apiServicios.getReservas(idUsuario)
+
+                // Limpiar la lista antes de agregar las nuevas reservas
+                reservas.clear()
+                // Agregar cada reserva al adaptador
+                reservas.addAll(reservasJsonArray)
+
+                // Actualizar el RecyclerView con las nuevas reservas en el hilo principal
+                runOnUiThread {
+                    Log.d("Reservas", "Actualizando RecyclerView")
+                    adapter.notifyDataSetChanged()
+                }
+            } catch (e: Exception) {
+                // Manejo de errores
+                Log.e("Reservas", "Error al obtener reservas: ${e.message}")
             }
         }
     }
@@ -77,30 +104,6 @@ class Reservas : AppCompatActivity() {
             else -> return super.onOptionsItemSelected(item)
         }
     }
-    private fun buscarReservas(idUsuario: String) {
-        lifecycleScope.launch(Dispatchers.IO) {
-            try {
-                val response = apiServicios.getReservas(idUsuario)
-                if (response.status.isSuccess()) {
-                    // Procesar la respuesta y llenar la lista de reservas
-                    val reservasJsonArray = response.body<List<Reserva>>()
-                    reservas.clear() // Limpiar la lista antes de agregar las nuevas reservas
-                    reservas.addAll(reservasJsonArray)
-
-                    // Actualizar el RecyclerView con las nuevas reservas
-                    runOnUiThread {
-                        adapter.notifyDataSetChanged()
-                    }
-                } else {
-                    // Procesamiento de la respuesta de error
-                    Toast.makeText(this@Reservas, "Usted no ha realizado ninguna reserva", Toast.LENGTH_SHORT).show()
-                }
-            } catch (e: Exception) {
-                // Manejo de errores
-            }
-        }
-    }
-
 
 
 }

@@ -10,7 +10,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:gravity="center">
 
         <TextView
             android:id="@+id/textViewTitlePost"
@@ -40,15 +41,25 @@
             android:layout_marginTop="16dp"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
-            android:hint="Identificador de socio"
+            android:hint="@string/idsocio_pista"
             android:inputType="number" />
 
         <EditText
-            android:id="@+id/editTextEmail"
+            android:id="@+id/editTextDeporte"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:hint="@string/deporte"
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/editTextEmail"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             android:hint="e-mail"
             android:inputType="textEmailAddress" />
@@ -104,11 +115,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
+            android:gravity="center"
             android:text="@string/post"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTextEdad" />
+            app:layout_constraintTop_toBottomOf="@+id/editTextComentario" />
 
         <TextView
             android:id="@+id/textResponse"

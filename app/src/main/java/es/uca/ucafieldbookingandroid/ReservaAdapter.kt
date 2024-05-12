@@ -1,5 +1,6 @@
 package es.uca.ucafieldbookingandroid
 
+import Reserva
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -43,8 +44,8 @@ RecyclerView.Adapter<ReservaAdapter.ReservaViewHolder>() {
             // Puedes configurar la visibilidad inicial de los TextView adicionales según sea necesario
             textViewExtra1.visibility = View.GONE
             textViewExtra2.visibility = View.GONE
-            textViewExtra3.visibility = View.VISIBLE
-            textViewExtra4.visibility = View.VISIBLE
+            textViewExtra3.visibility = View.GONE
+            textViewExtra4.visibility = View.GONE
 
         }
     }

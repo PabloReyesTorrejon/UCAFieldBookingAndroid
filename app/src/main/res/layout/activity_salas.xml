@@ -39,6 +39,7 @@
                 android:orientation="vertical">
 
                 <RelativeLayout
+                    android:id="@+id/fixed_view"
                     android:layout_width="match_parent"
                     android:layout_height="200dp">
 
@@ -62,11 +63,11 @@
                         android:text="@string/padel"
                         android:textSize="30sp" />
 
-                    <Button
+                    <!--<Button
                         android:id="@+id/boton_expand"
                         style="@style/Widget.AppCompat.Button.Borderless"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent" />
+                        android:layout_height="match_parent" />-->
 
                 </RelativeLayout>
 

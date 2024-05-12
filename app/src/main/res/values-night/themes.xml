@@ -3,5 +3,9 @@
     <style name="Base.Theme.UCAFieldBookingAndroid" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your dark theme here. -->
         <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+        <item name="android:ambientShadowAlpha">0.1</item>
+        <item name="android:spotShadowAlpha">0.4</item>
+        <item name="android:outlineAmbientShadowColor">@color/white</item>
+        <item name="android:outlineSpotShadowColor">@color/white</item>
     </style>
 </resources>

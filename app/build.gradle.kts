@@ -35,6 +35,7 @@ android {
         jvmTarget = "1.8"
     }
 }
+val ktor_version = "1.6.7"
 
 dependencies {
 
@@ -51,4 +52,9 @@ dependencies {
     implementation("io.ktor:ktor-client-serialization-jvm:2.3.4")
     implementation("io.ktor:ktor-client-core-jvm:2.3.4")
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.4.0")
+    implementation("io.ktor:ktor-client-core:$ktor_version")
+    implementation("io.ktor:ktor-client-json:$ktor_version")
+    implementation("io.ktor:ktor-client-json-jvm:$ktor_version")
+    implementation("io.ktor:ktor-client-serialization:$ktor_version")
+    implementation("io.ktor:ktor-client-android:$ktor_version")
 }

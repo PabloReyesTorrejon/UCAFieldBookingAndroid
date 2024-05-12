@@ -20,6 +20,7 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.snackbar.Snackbar
 import io.ktor.client.call.body
 import io.ktor.client.call.receive
 import io.ktor.client.statement.bodyAsText
@@ -53,6 +54,12 @@ class Reservas : AppCompatActivity() {
         // Asigna el LayoutManager al RecyclerView
         // en este caso se usa LinearLayoutManager para mostrar la lista en una sola columna
         recyclerView.layoutManager = LinearLayoutManager(this)
+
+        // Muestra un mensaje de Snackbar si se recibe un mensaje de otra actividad
+        val message = intent.getStringExtra("snackbar_message")
+        if (message != null) {
+            Snackbar.make(findViewById(android.R.id.content), message, Snackbar.LENGTH_LONG).show()
+        }
 
         buttonGet.setOnClickListener {
             val idUsuario = editTextUserId.text.toString()

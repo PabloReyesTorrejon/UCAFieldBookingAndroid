@@ -2,6 +2,7 @@ package es.uca.ucafieldbookingandroid
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -28,10 +29,18 @@ import java.util.Locale
 
 class EditarReserva : AppCompatActivity() {
     private val apiServicios = APIservicios()
+    // Almacena los valores iniciales de los campos
+    private lateinit var nombreInicial: String
+    private lateinit var deporteInicial: String
+    private lateinit var emailInicial: String
+    private lateinit var asistentesInicial: String
+    private lateinit var comentarioInicial: String
+
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+        val idsocio = intent.getStringExtra("IDSOCIO_EXTRA")
         setContentView(R.layout.activity_editar_reserva)
         val buttonPut = findViewById<Button>(R.id.buttonPut)
         val editTextNombre = findViewById<EditText>(R.id.editTextNombre)
@@ -42,6 +51,12 @@ class EditarReserva : AppCompatActivity() {
         val editTextAsistentes = findViewById<EditText>(R.id.editTextAsistentes)
         val editTextComentario = findViewById<EditText>(R.id.editTextComentario)
 
+        // Guarda los valores iniciales de los campos
+        nombreInicial = editTextNombre.text.toString()
+        deporteInicial = editTextDeporte.text.toString()
+        emailInicial = editTextemail.text.toString()
+        asistentesInicial = editTextAsistentes.text.toString()
+        comentarioInicial = editTextComentario.text.toString()
 
         var idCounter = 1
 
@@ -67,22 +82,21 @@ class EditarReserva : AppCompatActivity() {
 
             lifecycleScope.launch(Dispatchers.IO) {
                 try {
-                    val response = apiServicios.editarReserva(nombre, deporte, email, fechaFormateada, horaFormateada, asistentes, comentario)
+                    val response = apiServicios.editarReserva(
+                        idsocio?:"",
+                        if (nombre != nombreInicial) nombre else null,
+                        if (deporte != deporteInicial) deporte else null,
+                        if (email != emailInicial) email else null,
+                        fechaFormateada,
+                        horaFormateada,
+                        if (asistentes != asistentesInicial) asistentes else null,
+                        if (comentario != comentarioInicial) comentario else null
+                    )
+                    val responseText = response.bodyAsText() // Extraer el texto de la respuesta
 
-                    editTextNombre.setText("")
-                    editTextDeporte.setText("")
-                    editTextemail.setText("")
-                    editTextAsistentes.setText("")
-                    editTextComentario.setText("")
-
-
-                    // Quitar el enfoque de cualquier vista que lo tenga
-                    // Plegar/ocultar el teclado numérico
-                    currentFocus?.let { focusedView ->
-                        ocultarTecladoExplicitamente(focusedView)
-                    }
-
-
+                    val intent = Intent(this@EditarReserva, Reservas::class.java)
+                    intent.putExtra("snackbar_message", responseText)
+                    startActivity(intent)
                 } catch (e: ClientRequestException) {
                     launch(Dispatchers.Main) {
                         Snackbar.make(findViewById(android.R.id.content), "Error: ${e.response?.status?.value} ${e.response?.status?.description} ${e.response?.body<String>()}", Snackbar.LENGTH_LONG).show()
@@ -94,7 +108,6 @@ class EditarReserva : AppCompatActivity() {
                 }
             }
         }
-
 
     }
     fun ocultarTecladoExplicitamente(view: View) {

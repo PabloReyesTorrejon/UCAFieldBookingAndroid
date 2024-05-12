@@ -20,6 +20,7 @@ RecyclerView.Adapter<ReservaAdapter.ReservaViewHolder>() {
     // lista.
     inner class ReservaViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val nombreTextView: TextView = itemView.findViewById(R.id.textViewReservaNombre)
+        private var idsocio: String? = null
         private val deporteTextView: TextView = itemView.findViewById(R.id.textViewReservaDeporte)
         private val verPistaButton: Button = itemView.findViewById(R.id.buttonVerReserva)
         private val editarReservaButton: Button = itemView.findViewById(R.id.buttonEditarReserva)
@@ -41,12 +42,14 @@ RecyclerView.Adapter<ReservaAdapter.ReservaViewHolder>() {
             editarReservaButton.setOnClickListener {
                 val context = it.context
                 val intent = Intent(context, EditarReserva::class.java)
-                context.startActivity(intent)
+                intent.putExtra("IDSOCIO_EXTRA", idsocio)
+                startActivity(context, intent, null)
             }
         }
 
         fun bind(reserva: Reserva) {
-            nombreTextView.text = "Nombre: " + reserva.nombre
+            nombreTextView.text = reserva.nombre
+            idsocio = reserva._id
             deporteTextView.text = "Deporte: " + reserva.deporte
             textViewExtra1.text = "Fecha: " + reserva.fecha
             textViewExtra2.text = "Hora: " + reserva.hora

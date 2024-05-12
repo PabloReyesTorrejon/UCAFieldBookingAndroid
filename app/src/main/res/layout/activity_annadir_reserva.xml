@@ -114,7 +114,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
             android:hint="Comentario adicional"
-            android:inputType="number" />
+            android:inputType="text" />
 
         <Button
             android:id="@+id/buttonPost"

@@ -64,7 +64,7 @@ class MainActivity : AppCompatActivity() {
         val intent = Intent(activity, secondActivity)
         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
         activity.startActivity(intent)
-        activity.finish()
+        /*activity.finish()*/
     }
 
     override fun onPause() {

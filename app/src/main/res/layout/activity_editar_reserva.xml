@@ -21,7 +21,7 @@
             android:layout_marginTop="32dp"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
-            android:text="@string/tituloFormulario"
+            android:text="@string/tituloFormularioEditarReserva"
             android:textSize="24sp"
             android:textColor="@color/black" />
 
@@ -35,15 +35,6 @@
             android:hint="Nombre"
             android:inputType="text" />
 
-        <EditText
-            android:id="@+id/editTextIDsocio"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:hint="@string/idsocio_pista"
-            android:inputType="number" />
 
         <EditText
             android:id="@+id/editTextDeporte"
@@ -117,14 +108,14 @@
             android:inputType="number" />
 
         <Button
-            android:id="@+id/buttonPost"
+            android:id="@+id/buttonPut"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:gravity="center"
             android:backgroundTint="@color/colorPrimary"
             android:textColor="@color/black"
-            android:text="@string/post"
+            android:gravity="center"
+            android:text="@string/ModificarReserva"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"

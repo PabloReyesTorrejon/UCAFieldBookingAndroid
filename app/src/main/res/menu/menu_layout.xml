@@ -4,6 +4,6 @@
     <item
         android:id="@+id/action_annadir_pista"
         android:title="@string/annadir_pista"
-        android:icon="@drawable/ic_action_name"
+        android:icon="@drawable/ic_add"
         app:showAsAction="ifRoom" />
 </menu>

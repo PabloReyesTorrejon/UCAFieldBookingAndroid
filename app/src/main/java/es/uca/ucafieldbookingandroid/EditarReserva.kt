@@ -1,5 +1,6 @@
 package es.uca.ucafieldbookingandroid
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
 import android.util.Log
@@ -15,6 +16,8 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.google.android.material.snackbar.Snackbar
+import io.ktor.client.call.body
+import io.ktor.client.call.receive
 import io.ktor.client.plugins.ClientRequestException
 import io.ktor.client.statement.bodyAsText
 import kotlinx.coroutines.Dispatchers
@@ -23,32 +26,30 @@ import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
 
-class AnnadirReserva : AppCompatActivity() {
+class EditarReserva : AppCompatActivity() {
     private val apiServicios = APIservicios()
+    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_annadir_reserva)
-        val buttonPost = findViewById<Button>(R.id.buttonPost)
+        setContentView(R.layout.activity_editar_reserva)
+        val buttonPut = findViewById<Button>(R.id.buttonPut)
         val editTextNombre = findViewById<EditText>(R.id.editTextNombre)
-        val editTextIDsocio = findViewById<EditText>(R.id.editTextIDsocio)
         val editTextDeporte = findViewById<EditText>(R.id.editTextDeporte)
         val editTextemail = findViewById<EditText>(R.id.editTextEmail)
         val dpFecha = findViewById<DatePicker>(R.id.dpFecha)
         val tpHora = findViewById<TimePicker>(R.id.tpFecha)
         val editTextAsistentes = findViewById<EditText>(R.id.editTextAsistentes)
         val editTextComentario = findViewById<EditText>(R.id.editTextComentario)
-        val textResponse = findViewById<TextView>(R.id.textResponse)
 
 
         var idCounter = 1
 
-        buttonPost.setOnClickListener {
+        buttonPut.setOnClickListener {
             val nombre = editTextNombre.text.toString()
-            val idsocio = editTextIDsocio.text.toString().toIntOrNull()
             val deporte = editTextDeporte.text.toString()
             val email = editTextemail.text.toString()
-            val asistentes = editTextAsistentes.text.toString().toIntOrNull()
+            val asistentes = editTextAsistentes.text.toString()
             val comentario = editTextComentario.text.toString()
 
             // Obtener fecha y hora seleccionadas por el usuario
@@ -64,38 +65,33 @@ class AnnadirReserva : AppCompatActivity() {
             val fechaFormateada = dateFormat.format(selectedDate.time)
             val horaFormateada = timeFormat.format(selectedTime.time)
 
-            if (nombre.isNotEmpty() && idsocio != null && deporte.isNotEmpty() && email.isNotEmpty() && asistentes != null && fechaFormateada.isNotEmpty() && horaFormateada.isNotEmpty()) {
-                lifecycleScope.launch(Dispatchers.IO) {
-                    try {
-                        val response = apiServicios.createReserva(nombre, idsocio, deporte, email, fechaFormateada, horaFormateada, asistentes, comentario)
+            lifecycleScope.launch(Dispatchers.IO) {
+                try {
+                    val response = apiServicios.editarReserva(nombre, deporte, email, fechaFormateada, horaFormateada, asistentes, comentario)
 
-                        editTextNombre.setText("")
-                        editTextIDsocio.setText("")
-                        editTextDeporte.setText("")
-                        editTextemail.setText("")
-                        editTextAsistentes.setText("")
-                        editTextComentario.setText("")
+                    editTextNombre.setText("")
+                    editTextDeporte.setText("")
+                    editTextemail.setText("")
+                    editTextAsistentes.setText("")
+                    editTextComentario.setText("")
 
 
-                        // Quitar el enfoque de cualquier vista que lo tenga
-                        // Plegar/ocultar el teclado numérico
-                        currentFocus?.let { focusedView ->
-                            ocultarTecladoExplicitamente(focusedView)
-                        }
+                    // Quitar el enfoque de cualquier vista que lo tenga
+                    // Plegar/ocultar el teclado numérico
+                    currentFocus?.let { focusedView ->
+                        ocultarTecladoExplicitamente(focusedView)
+                    }
 
 
-                    } catch (e: ClientRequestException) {
-                        launch(Dispatchers.Main) {
-                            mostrarToast("Error: ${e.response.status.description}")
-                        }
-                    } catch (e: Exception) {
-                        launch(Dispatchers.Main) {
-                            mostrarToast("Error: ${e.message}")
-                        }
+                } catch (e: ClientRequestException) {
+                    launch(Dispatchers.Main) {
+                        Snackbar.make(findViewById(android.R.id.content), "Error: ${e.response?.status?.value} ${e.response?.status?.description} ${e.response?.body<String>()}", Snackbar.LENGTH_LONG).show()
+                    }
+                } catch (e: Exception) {
+                    launch(Dispatchers.Main) {
+                        Snackbar.make(findViewById(android.R.id.content), "Error: ${e.message}", Snackbar.LENGTH_LONG).show()
                     }
                 }
-            } else {
-                mostrarToast("Por favor, completa todos los campos correctamente")
             }
         }
 
@@ -107,8 +103,5 @@ class AnnadirReserva : AppCompatActivity() {
         runOnUiThread{
             view.clearFocus()
         }
-    }
-    fun mostrarToast(mensaje: String) {
-        Toast.makeText(this, mensaje, Toast.LENGTH_SHORT).show()
     }
 }

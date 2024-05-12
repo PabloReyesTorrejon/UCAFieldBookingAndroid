@@ -43,4 +43,20 @@ class APIservicios {
         return Json { ignoreUnknownKeys = true }.decodeFromString<List<Reserva>>(content)
     }
 
+    suspend fun editarReserva(nombre: String, deporte: String, email: String, fecha: String, hora: String, asistentes: String, comentario: String): HttpResponse {
+        return client.submitForm(
+            url = "http://"+IP_PORT+"/reservas/modificar_reserva",
+            formParameters = Parameters.build {
+                append("nombre", nombre)
+                append("deporte", deporte)
+                append("email", email)
+                append("fecha", fecha)
+                append("hora", hora)
+                append("asistentes", asistentes.toString())
+                append("comentario", comentario)
+            },
+            encodeInQuery = false
+        )
+    }
+
 }

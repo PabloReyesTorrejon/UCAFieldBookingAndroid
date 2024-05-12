@@ -18,4 +18,8 @@
     <string name="tituloHora">Hora</string>
     <string name="tituloAsistentes">Asistentes</string>
     <string name="tituloComentario">Comentario</string>
+    <string name="EditarReserva">Editar reserva</string>
+    <string name="EliminarReserva">Eliminar reserva</string>
+    <string name="tituloFormularioEditarReserva">Rellena los campos de tu reserva que quieras modificar</string>
+    <string name="ModificarReserva">Guardar cambios</string>
 </resources>

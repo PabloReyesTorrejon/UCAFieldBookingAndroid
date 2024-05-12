@@ -1,23 +1,21 @@
 package es.uca.ucafieldbookingandroid
 
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.transition.AutoTransition
 import android.transition.TransitionManager
-import android.util.Log
+import android.util.TypedValue
+import android.view.ContentInfo
 import android.view.View
-import android.widget.Button
 import android.widget.ImageView
 import android.widget.RelativeLayout
 import android.widget.TextView
-import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
 import androidx.core.view.GravityCompat
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.drawerlayout.widget.DrawerLayout
 
 class Salas : AppCompatActivity() {
@@ -32,20 +30,24 @@ class Salas : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_salas)
 
-        val botonExpandir = findViewById<Button>(R.id.boton_expand)
+        /*val botonExpandir = findViewById<Button>(R.id.boton_expand)*/
         val expandableView = findViewById<RelativeLayout>(R.id.expandable_view)
+        val fixedView = findViewById<RelativeLayout>(R.id.fixed_view)
         val cardView = findViewById<CardView>(R.id.cardView_expandable)
+        val imageView = findViewById<ImageView>(R.id.imageView2)
 
-        botonExpandir.setOnClickListener{
-            Log.d("BUTTONS", "User tapped the Supabutton")
-            Toast.makeText(botonExpandir.context, "Boton", Toast.LENGTH_SHORT).show()
+        cardView.setOnClickListener{
+            /*Log.d("BUTTONS", "User tapped the Supabutton")
+            Toast.makeText(carView.context, "Boton", Toast.LENGTH_SHORT).show()*/
             if (expandableView.visibility == View.GONE){
                 TransitionManager.beginDelayedTransition(cardView, AutoTransition())
                 expandableView.visibility = View.VISIBLE
+                fixedView.layoutParams.height = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 80f, resources.displayMetrics).toInt()
             }
             else{
                 TransitionManager.beginDelayedTransition(cardView, AutoTransition())
                 expandableView.visibility = View.GONE
+                fixedView.layoutParams.height = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 200f, resources.displayMetrics).toInt()
             }
         }
 

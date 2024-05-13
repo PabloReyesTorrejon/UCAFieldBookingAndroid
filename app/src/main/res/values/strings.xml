@@ -24,4 +24,6 @@
     <string name="tituloFormularioEditarReserva">Rellena los campos de tu reserva que quieras modificar</string>
     <string name="ModificarReserva">Guardar cambios</string>
     <string name="Creditos">Proyecto realizado por:\nIsmael Vargas y Pablo Reyes</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Open navigation drawer</string>
 </resources>

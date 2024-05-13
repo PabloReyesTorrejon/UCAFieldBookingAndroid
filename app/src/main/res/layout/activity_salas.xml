@@ -17,7 +17,7 @@
         <include layout="@layout/toolbar" />
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/cardView_expandable"
+            android:id="@+id/cardView_expandable1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
@@ -39,12 +39,12 @@
                 android:orientation="vertical">
 
                 <RelativeLayout
-                    android:id="@+id/fixed_view"
+                    android:id="@+id/fixed_view1"
                     android:layout_width="match_parent"
                     android:layout_height="200dp">
 
                     <ImageView
-                        android:id="@+id/imageView2"
+                        android:id="@+id/cardImage1"
                         android:layout_width="match_parent"
                         android:layout_height="130dp"
                         android:contentDescription="@string/img_padel"
@@ -54,7 +54,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/imageView2"
+                        android:layout_below="@+id/cardImage1"
                         android:layout_alignParentStart="true"
                         android:layout_alignParentEnd="true"
                         android:layout_alignParentBottom="true"
@@ -63,37 +63,344 @@
                         android:text="@string/padel"
                         android:textSize="30sp" />
 
-                    <!--<Button
-                        android:id="@+id/boton_expand"
-                        style="@style/Widget.AppCompat.Button.Borderless"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent" />-->
-
                 </RelativeLayout>
 
                 <RelativeLayout
-                    android:id="@+id/expandable_view"
+                    android:id="@+id/expandable_view1"
                     android:layout_width="match_parent"
-                    android:layout_height="200dp"
+                    android:layout_height="wrap_content"
                     android:background="@color/background"
                     android:visibility="gone">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:id="@+id/expandText1"
+                        android:layout_margin="10dp"
                         android:layout_alignParentStart="true"
                         android:layout_alignParentTop="true"
                         android:layout_alignParentEnd="true"
                         android:fontFamily="sans-serif-black"
-                        android:gravity="center"
-                        android:text="@string/datos"
-                        android:textSize="20sp" />
+                        android:gravity="start"
+                        android:text="@string/datos1"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/expandServ1"
+                        android:layout_below="@+id/expandText1"
+                        android:layout_marginLeft="10dp"
+                        android:text="Servicios"
+                        android:fontFamily="sans-serif-black"
+                        android:textSize="20sp"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_below="@+id/expandServ1">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="15dp"
+                            android:layout_marginStart="30dp"
+                            android:layout_marginBottom="15dp"
+                            android:layout_marginEnd="20dp"
+                            android:fontFamily="sans-serif-black"
+                            android:text="Material"
+                            android:textSize="10sp"
+                            android:scaleX="1.5"
+                            android:scaleY="1.5"
+                            app:drawableTopCompat="@drawable/baseline_sports_baseball_24" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="15dp"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginBottom="15dp"
+                            android:layout_marginEnd="20dp"
+                            android:fontFamily="sans-serif-black"
+                            android:text="Vestuarios"
+                            android:textSize="10sp"
+                            android:scaleX="1.5"
+                            android:scaleY="1.5"
+                            app:drawableTopCompat="@drawable/baseline_shower_24" />
+
+                    </LinearLayout>
 
                 </RelativeLayout>
 
             </LinearLayout>
 
         </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView_expandable2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="24dp"
+            app:cardBackgroundColor="#E8E7E7"
+            app:cardCornerRadius="18dp"
+            app:cardElevation="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.183">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:id="@+id/fixed_view2"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp">
+
+                    <ImageView
+                        android:id="@+id/cardImage2"
+                        android:layout_width="match_parent"
+                        android:layout_height="130dp"
+                        android:contentDescription="@string/img_padel"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/tenis" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/cardImage2"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentBottom="true"
+                        android:fontFamily="sans-serif-black"
+                        android:gravity="center"
+                        android:text="Tenis"
+                        android:textSize="30sp" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/expandable_view2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/background"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/expandText2"
+                        android:layout_margin="10dp"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentEnd="true"
+                        android:fontFamily="sans-serif-black"
+                        android:gravity="start"
+                        android:text="@string/datos1"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/expandServ2"
+                        android:layout_below="@+id/expandText2"
+                        android:layout_marginLeft="10dp"
+                        android:text="Servicios"
+                        android:fontFamily="sans-serif-black"
+                        android:textSize="20sp"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_below="@+id/expandServ2">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="15dp"
+                            android:layout_marginStart="30dp"
+                            android:layout_marginBottom="15dp"
+                            android:layout_marginEnd="20dp"
+                            android:fontFamily="sans-serif-black"
+                            android:text="Material"
+                            android:textSize="10sp"
+                            android:scaleX="1.5"
+                            android:scaleY="1.5"
+                            app:drawableTopCompat="@drawable/baseline_sports_baseball_24" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="15dp"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginBottom="15dp"
+                            android:layout_marginEnd="20dp"
+                            android:fontFamily="sans-serif-black"
+                            android:text="Vestuarios"
+                            android:textSize="10sp"
+                            android:scaleX="1.5"
+                            android:scaleY="1.5"
+                            app:drawableTopCompat="@drawable/baseline_shower_24" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="15dp"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginBottom="15dp"
+                            android:layout_marginEnd="20dp"
+                            android:fontFamily="sans-serif-black"
+                            android:text="Taquillas"
+                            android:textSize="10sp"
+                            android:scaleX="1.5"
+                            android:scaleY="1.5"
+                            app:drawableTopCompat="@drawable/baseline_lock_24" />
+
+                    </LinearLayout>
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView_expandable3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="24dp"
+            app:cardBackgroundColor="#E8E7E7"
+            app:cardCornerRadius="18dp"
+            app:cardElevation="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.183">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:id="@+id/fixed_view3"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp">
+
+                    <ImageView
+                        android:id="@+id/cardImage3"
+                        android:layout_width="match_parent"
+                        android:layout_height="130dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/futbol" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/cardImage3"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentBottom="true"
+                        android:fontFamily="sans-serif-black"
+                        android:gravity="center"
+                        android:text="Fútbol"
+                        android:textSize="30sp" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/expandable_view3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/background"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/expandText3"
+                        android:layout_margin="10dp"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentEnd="true"
+                        android:fontFamily="sans-serif-black"
+                        android:gravity="start"
+                        android:text="@string/datos2"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/expandServ3"
+                        android:layout_below="@+id/expandText3"
+                        android:layout_marginLeft="10dp"
+                        android:text="Servicios"
+                        android:fontFamily="sans-serif-black"
+                        android:textSize="20sp"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_below="@+id/expandServ3">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="15dp"
+                            android:layout_marginStart="30dp"
+                            android:layout_marginBottom="15dp"
+                            android:layout_marginEnd="20dp"
+                            android:fontFamily="sans-serif-black"
+                            android:text="Parking"
+                            android:textSize="10sp"
+                            android:scaleX="1.5"
+                            android:scaleY="1.5"
+                            app:drawableTopCompat="@drawable/baseline_local_parking_24" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="15dp"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginBottom="15dp"
+                            android:layout_marginEnd="20dp"
+                            android:fontFamily="sans-serif-black"
+                            android:text="Vestuarios"
+                            android:textSize="10sp"
+                            android:scaleX="1.5"
+                            android:scaleY="1.5"
+                            app:drawableTopCompat="@drawable/baseline_shower_24" />
+
+                    </LinearLayout>
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/botonDescarga"
+            android:layout_margin="24dp"
+            android:backgroundTint="@color/colorPrimary"
+            android:textColor="@color/black"
+            android:fontFamily="sans-serif-black"
+            android:text="Descargar PDF"/>
 
     </LinearLayout>
 

@@ -1,21 +1,27 @@
 package es.uca.ucafieldbookingandroid
 
 import android.app.Activity
+import android.app.DownloadManager
 import android.content.Context
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.transition.AutoTransition
 import android.transition.TransitionManager
 import android.util.TypedValue
 import android.view.ContentInfo
 import android.view.View
+import android.widget.Button
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
 import androidx.core.view.GravityCompat
+import androidx.core.view.get
 import androidx.drawerlayout.widget.DrawerLayout
 
 class Salas : AppCompatActivity() {
@@ -30,25 +36,37 @@ class Salas : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_salas)
 
-        /*val botonExpandir = findViewById<Button>(R.id.boton_expand)*/
-        val expandableView = findViewById<RelativeLayout>(R.id.expandable_view)
-        val fixedView = findViewById<RelativeLayout>(R.id.fixed_view)
-        val cardView = findViewById<CardView>(R.id.cardView_expandable)
-        val imageView = findViewById<ImageView>(R.id.imageView2)
+        val cardView1 = findViewById<CardView>(R.id.cardView_expandable1)
+        val cardView2 = findViewById<CardView>(R.id.cardView_expandable2)
+        val cardView3 = findViewById<CardView>(R.id.cardView_expandable3)
+        val fixedView1 = findViewById<RelativeLayout>(R.id.fixed_view1)
+        val fixedView2 = findViewById<RelativeLayout>(R.id.fixed_view2)
+        val fixedView3 = findViewById<RelativeLayout>(R.id.fixed_view3)
+        val expandableView1 = findViewById<RelativeLayout>(R.id.expandable_view1)
+        val expandableView2 = findViewById<RelativeLayout>(R.id.expandable_view2)
+        val expandableView3 = findViewById<RelativeLayout>(R.id.expandable_view3)
 
-        cardView.setOnClickListener{
-            /*Log.d("BUTTONS", "User tapped the Supabutton")
-            Toast.makeText(carView.context, "Boton", Toast.LENGTH_SHORT).show()*/
-            if (expandableView.visibility == View.GONE){
-                TransitionManager.beginDelayedTransition(cardView, AutoTransition())
-                expandableView.visibility = View.VISIBLE
-                fixedView.layoutParams.height = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 80f, resources.displayMetrics).toInt()
-            }
-            else{
-                TransitionManager.beginDelayedTransition(cardView, AutoTransition())
-                expandableView.visibility = View.GONE
-                fixedView.layoutParams.height = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 200f, resources.displayMetrics).toInt()
-            }
+        val descarga = findViewById<Button>(R.id.botonDescarga)
+
+        cardView1.setOnClickListener{
+            expandir(cardView1, fixedView1, expandableView1)
+        }
+
+        cardView2.setOnClickListener{
+            expandir(cardView2, fixedView2, expandableView2)
+        }
+
+        cardView3.setOnClickListener{
+            expandir(cardView3, fixedView3, expandableView3)
+        }
+
+        descarga.setOnClickListener{
+            var download= this.getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
+            var PdfUri = Uri.parse("https://firebasestorage.googleapis.com/v0/b/pdf-downloader-f301f.appspot.com/o/UCA%20Field%20Booking.pdf?alt=media&token=ae62494c-fa57-4eb9-813e-5cc751874b88")
+            var getPdf = DownloadManager.Request(PdfUri)
+            getPdf.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
+            download.enqueue(getPdf)
+            Toast.makeText(this,"Descargando", Toast.LENGTH_LONG).show()
         }
 
         drawerLayout = findViewById(R.id.salas)
@@ -66,7 +84,7 @@ class Salas : AppCompatActivity() {
         }
 
         reservas.setOnClickListener{
-            redirectActivity(this@Salas, AnnadirReserva::class.java)
+            redirectActivity(this@Salas, Reservas::class.java)
         }
 
         local.setOnClickListener{
@@ -94,5 +112,18 @@ class Salas : AppCompatActivity() {
     override fun onPause() {
         super.onPause()
         closeDrawer(drawerLayout)
+    }
+
+    fun expandir(cardView:CardView, fixedView: RelativeLayout, expandableView: RelativeLayout){
+        if (expandableView.visibility == View.GONE){
+            TransitionManager.beginDelayedTransition(cardView, AutoTransition())
+            expandableView.visibility = View.VISIBLE
+            fixedView.layoutParams.height = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 80f, resources.displayMetrics).toInt()
+        }
+        else{
+            TransitionManager.beginDelayedTransition(cardView, AutoTransition())
+            expandableView.visibility = View.GONE
+            fixedView.layoutParams.height = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 200f, resources.displayMetrics).toInt()
+        }
     }
 }

@@ -12,7 +12,8 @@
     <string name="post">Añadir reserva</string>
     <string name="padel">Pádel</string>
     <string name="img_padel">Pista de pádel</string>
-    <string name="datos">Texto de prueba</string>
+    <string name="datos1">Pistas disponibles para 2 y 4 personas</string>
+    <string name="datos2">Pistas disponibles para hasta 14 personas</string>
     <string name="postReserva">Consultar reservas</string>
     <string name="idsocio_pista">Introduce tu ID de socio</string>
     <string name="tituloHora">Hora</string>

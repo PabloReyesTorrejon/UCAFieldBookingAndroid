@@ -5,6 +5,7 @@ package es.uca.ucafieldbookingandroid
 import Reserva
 import io.ktor.client.*
 import io.ktor.client.engine.android.*
+import io.ktor.client.request.delete
 import io.ktor.client.request.forms.submitForm
 import io.ktor.client.request.get
 import io.ktor.client.request.put
@@ -73,5 +74,9 @@ class APIservicios {
             contentType(ContentType.Application.Json)
             body = params.toString()
         }
+    }
+
+    suspend fun eliminarReserva(idsocio: String): HttpResponse {
+        return client.delete("http://$IP_PORT/reservas/delete_reserva/$idsocio")
     }
 }

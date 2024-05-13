@@ -9,13 +9,19 @@ import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.core.content.ContextCompat.startActivity
+import androidx.lifecycle.LifecycleCoroutineScope
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
+import kotlinx.coroutines.launch
 
 // Define la clase ReservaAdapter y extiende la clase RecyclerView.Adapter<ReservaAdapter.ReservaViewHolder>. Esta clase maneja el
 //conjunto de datos de Reserva y lo une con la vista que se va a mostrar en la lista.
-class ReservaAdapter(private val reservas: List<Reserva>) :
-// Se define la clase interna ReservaViewHolder, que extiende de la clase RecyclerView.ViewHolder.
-RecyclerView.Adapter<ReservaAdapter.ReservaViewHolder>() {
+class ReservaAdapter(
+    private val reservas: MutableList<Reserva>,
+    private val apiServicios: APIservicios,
+    private val lifecycleScope: LifecycleCoroutineScope
+) : RecyclerView.Adapter<ReservaAdapter.ReservaViewHolder>() {
+
     // Esta clase almacena las referencias de los elementos de la vista (los widgets o views) que se muestran en cada elemento de la
     // lista.
     inner class ReservaViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -44,6 +50,20 @@ RecyclerView.Adapter<ReservaAdapter.ReservaViewHolder>() {
                 val intent = Intent(context, EditarReserva::class.java)
                 intent.putExtra("IDSOCIO_EXTRA", idsocio)
                 startActivity(context, intent, null)
+            }
+            // Agrega un OnClickListener al botón "Eliminar reserva"
+            eliminarReservaButton.setOnClickListener {
+                // Llamar a eliminarReserva en una corrutina
+                lifecycleScope.launch {
+                    try {
+                        apiServicios.eliminarReserva(idsocio!!)
+                        // Eliminar la reserva de la lista y notificar al adaptador
+                        reservas.removeAt(adapterPosition)
+                        notifyItemRemoved(adapterPosition)
+                    } catch (e: Exception) {
+                        // Manejo de errores
+                    }
+                }
             }
         }
 

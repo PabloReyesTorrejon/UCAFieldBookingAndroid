@@ -48,8 +48,7 @@ class Reservas : AppCompatActivity() {
         // Obtiene una referencia al RecyclerView del layout
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
         // Crea una instancia del adaptador para la lista de mascotas
-        adapter = ReservaAdapter(reservas)
-        // Asigna el adaptador al RecyclerView
+        adapter = ReservaAdapter(reservas, apiServicios, lifecycleScope)        // Asigna el adaptador al RecyclerView
         recyclerView.adapter = adapter
         // Asigna el LayoutManager al RecyclerView
         // en este caso se usa LinearLayoutManager para mostrar la lista en una sola columna

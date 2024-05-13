@@ -12,11 +12,15 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.RelativeLayout
 import android.widget.Toast
+import androidx.appcompat.widget.Toolbar
 import androidx.activity.enableEdgeToEdge
+import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
+import androidx.core.view.GravityCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -30,17 +34,23 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.serialization.json.Json
 
+
 class Reservas : AppCompatActivity() {
     private val apiServicios = APIservicios()
     private val reservas = mutableListOf<Reserva>()
     private lateinit var adapter: ReservaAdapter
+    private lateinit var drawerLayout: DrawerLayout
+    private lateinit var toggle: ActionBarDrawerToggle
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_reservas)
-        setSupportActionBar(findViewById(R.id.my_toolbar))
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        //enableEdgeToEdge()
-        //setContentView(R.layout.activity_reservas)
+        val toolbar: Toolbar = findViewById(R.id.my_toolbar)
+        setSupportActionBar(toolbar)
+
+        drawerLayout = findViewById(R.id.drawer_layout)
+        toggle = ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
+        drawerLayout.addDrawerListener(toggle)
+        toggle.syncState()
 
         val editTextUserId = findViewById<EditText>(R.id.editTextUserId)
         val buttonGet = findViewById<Button>(R.id.buttonGet)
@@ -110,6 +120,4 @@ class Reservas : AppCompatActivity() {
             else -> return super.onOptionsItemSelected(item)
         }
     }
-
-
 }

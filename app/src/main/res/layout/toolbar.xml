@@ -8,7 +8,7 @@
     android:paddingStart="20dp"
     android:paddingEnd="20dp"
     android:id="@+id/toolbar"
-    android:background="#4DB6AC"
+    android:background="@color/colorPrimary"
     android:gravity="center_vertical">
 
     <ImageView

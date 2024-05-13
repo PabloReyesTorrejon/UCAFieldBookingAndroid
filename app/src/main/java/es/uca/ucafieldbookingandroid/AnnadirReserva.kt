@@ -1,6 +1,7 @@
 package es.uca.ucafieldbookingandroid
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -76,8 +77,14 @@ class AnnadirReserva : AppCompatActivity() {
                         editTextAsistentes.setText("")
                         editTextComentario.setText("")
 
+                        // Cambiar a la actividad Reserva
+                        val intent = Intent(this@AnnadirReserva, Reservas::class.java)
+                        startActivity(intent)
 
-                        // Quitar el enfoque de cualquier vista que lo tenga
+                        // Mostrar un Toast
+                        launch(Dispatchers.Main) {
+                            Toast.makeText(this@AnnadirReserva, "Reserva añadida correctamente", Toast.LENGTH_SHORT).show()
+                        }                        // Quitar el enfoque de cualquier vista que lo tenga
                         // Plegar/ocultar el teclado numérico
                         currentFocus?.let { focusedView ->
                             ocultarTecladoExplicitamente(focusedView)

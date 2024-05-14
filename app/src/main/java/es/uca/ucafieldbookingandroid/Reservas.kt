@@ -39,7 +39,7 @@ import kotlinx.serialization.json.Json
 
 
 class Reservas : AppCompatActivity() {
-    private val apiServicios = APIservicios()
+    private val apiServicios = APIservicios(context = this)
     private val reservas = mutableListOf<Reserva>()
     private lateinit var adapter: ReservaAdapter
     private lateinit var drawerLayout: DrawerLayout

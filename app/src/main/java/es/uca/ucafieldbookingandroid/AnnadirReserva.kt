@@ -25,7 +25,7 @@ import java.util.Calendar
 import java.util.Locale
 
 class AnnadirReserva : AppCompatActivity() {
-    private val apiServicios = APIservicios()
+    private val apiServicios = APIservicios(context = this)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()

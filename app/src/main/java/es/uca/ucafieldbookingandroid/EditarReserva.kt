@@ -28,7 +28,7 @@ import java.util.Calendar
 import java.util.Locale
 
 class EditarReserva : AppCompatActivity() {
-    private val apiServicios = APIservicios()
+    private val apiServicios = APIservicios(context = this)
     // Almacena los valores iniciales de los campos
     private lateinit var nombreInicial: String
     private lateinit var deporteInicial: String

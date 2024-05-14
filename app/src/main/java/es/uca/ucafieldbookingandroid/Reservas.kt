@@ -116,6 +116,11 @@ class Reservas : AppCompatActivity() {
                 // Agregar cada reserva al adaptador
                 reservas.addAll(reservasJsonArray)
 
+                // Después de actualizar las reservas, envía el broadcast para actualizar el widget
+                val intent = Intent(this@Reservas, IdSocioWidget::class.java)
+                intent.action = "android.appwidget.action.APPWIDGET_UPDATE"
+                this@Reservas.sendBroadcast(intent)
+
                 // Actualizar el RecyclerView con las nuevas reservas en el hilo principal
                 runOnUiThread {
                     Log.d("Reservas", "Actualizando RecyclerView")

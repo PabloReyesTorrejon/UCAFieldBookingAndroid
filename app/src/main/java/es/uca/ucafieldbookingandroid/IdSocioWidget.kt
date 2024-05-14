@@ -1,8 +1,9 @@
-
 package es.uca.ucafieldbookingandroid
+import android.app.PendingIntent
 import android.appwidget.AppWidgetManager
 import android.appwidget.AppWidgetProvider
 import android.content.Context
+import android.content.Intent
 import android.widget.RemoteViews
 import es.uca.ucafieldbookingandroid.R
 
@@ -22,7 +23,15 @@ class IdSocioWidget : AppWidgetProvider() {
 
         // Construir la vista del widget
         val views = RemoteViews(context.packageName, R.layout.id_socio_widget)
-        views.setTextViewText(R.id.id_socio_text, lastIdSocio)
+        views.setTextViewText(R.id.id_socio_text, "Último ID Socio: $lastIdSocio")
+
+        // Crear un Intent para iniciar la actividad Reservas
+        val intent = Intent(context, Reservas::class.java)
+        val pendingIntent: PendingIntent =
+            PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_IMMUTABLE)
+
+        // Asignar el PendingIntent al widget
+        views.setOnClickPendingIntent(R.id.id_socio_logo, pendingIntent)
 
         // Actualizar el widget
         appWidgetManager.updateAppWidget(appWidgetId, views)

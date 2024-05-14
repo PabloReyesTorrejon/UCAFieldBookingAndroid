@@ -6,6 +6,7 @@
     android:id="@+id/salas"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background"
     tools:context=".Salas">
 
     <LinearLayout
@@ -36,6 +37,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@color/cardBackground"
                 android:orientation="vertical">
 
                 <RelativeLayout
@@ -58,7 +60,7 @@
                         android:layout_alignParentStart="true"
                         android:layout_alignParentEnd="true"
                         android:layout_alignParentBottom="true"
-                        android:fontFamily="sans-serif-black"
+                        android:fontFamily="@font/poppins_bold"
                         android:gravity="center"
                         android:text="@string/padel"
                         android:textSize="30sp" />
@@ -157,6 +159,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@color/cardBackground"
                 android:orientation="vertical">
 
                 <RelativeLayout
@@ -292,6 +295,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@color/cardBackground"
                 android:orientation="vertical">
 
                 <RelativeLayout

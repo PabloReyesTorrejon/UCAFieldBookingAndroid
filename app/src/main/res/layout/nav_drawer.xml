@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/cardBackground">
     
     <LinearLayout
         android:orientation="vertical"
@@ -11,14 +12,17 @@
         android:layout_height="176dp"
         android:background="@drawable/header_bkg"
         android:gravity="bottom"
-        android:padding="16dp"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
         android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
         <ImageView
             android:id="@+id/iconoAppDrawer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:contentDescription="Navigation header"
+            android:contentDescription="@string/navigation_header_logo"
             android:paddingTop="8dp"
             app:srcCompat="@mipmap/ic_launcher_round"/>
 
@@ -26,14 +30,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingTop="8dp"
-            android:text="Android Studio"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body1"/>
+            android:text="@string/home_title"
+            android:fontFamily="@font/poppins_bold"/>
 
         <TextView
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Android"/>
+            android:text="@string/navigation_header_names"
+            android:fontFamily="@font/poppins"/>
 
     </LinearLayout>
     
@@ -47,7 +52,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/boton_salas"
-            android:text="Salas"
+            android:text="@string/drawer_salas"
             android:textSize="20sp"
             android:layout_marginTop="20dp"
             app:drawableLeftCompat="@drawable/baseline_sports_baseball_24"
@@ -58,7 +63,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/boton_reservas"
-            android:text="Reservas"
+            android:text="@string/drawer_reservas"
             android:textSize="20sp"
             android:layout_marginTop="20dp"
             app:drawableLeftCompat="@drawable/baseline_bookmarks_24"
@@ -69,7 +74,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/boton_local"
-            android:text="Localización"
+            android:text="@string/drawer_local"
             android:textSize="20sp"
             android:layout_marginTop="20dp"
             app:drawableLeftCompat="@drawable/baseline_place_24"

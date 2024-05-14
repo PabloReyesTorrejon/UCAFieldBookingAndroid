@@ -80,7 +80,7 @@ class Salas : AppCompatActivity() {
         }
 
         salas.setOnClickListener{
-            redirectActivity(this@Salas, Salas::class.java)
+            recreate()
         }
 
         reservas.setOnClickListener{

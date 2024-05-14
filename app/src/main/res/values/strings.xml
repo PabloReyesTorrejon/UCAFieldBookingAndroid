@@ -26,4 +26,12 @@
     <string name="Creditos">Proyecto realizado por:\nIsmael Vargas y Pablo Reyes</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Open navigation drawer</string>
+    <string name="welcome">¡Bienvenido a UCA Field Booking!\nDesde esta aplicación podrás realizar de una manera simple e intuitiva reservas de las distintas pistas deportivas que ofrece la Universida de Cádiz.\n¡Esperamos que disfrutes!</string>
+    <string name="home_title">UCA FIELD BOOKING</string>
+    <string name="logo_app">logo app</string>
+    <string name="navigation_header_logo">Navigation header logo</string>
+    <string name="navigation_header_names">Ismael Vargas y Pablo Reyes</string>
+    <string name="drawer_reservas">Reservas</string>
+    <string name="drawer_salas">Salas</string>
+    <string name="drawer_local">Localización</string>
 </resources>

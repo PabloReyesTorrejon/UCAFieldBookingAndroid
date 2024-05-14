@@ -97,7 +97,7 @@ class Reservas : AppCompatActivity() {
         }
 
         vistaReservas.setOnClickListener{
-            redirectActivity(this@Reservas, Reservas::class.java)
+            recreate()
         }
 
         local.setOnClickListener{

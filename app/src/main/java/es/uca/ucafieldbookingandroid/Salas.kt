@@ -9,11 +9,9 @@ import android.os.Bundle
 import android.transition.AutoTransition
 import android.transition.TransitionManager
 import android.util.TypedValue
-import android.view.ContentInfo
 import android.view.View
 import android.widget.Button
 import android.widget.ImageView
-import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import android.widget.TextView
 import android.widget.Toast
@@ -21,7 +19,6 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
 import androidx.core.view.GravityCompat
-import androidx.core.view.get
 import androidx.drawerlayout.widget.DrawerLayout
 
 class Salas : AppCompatActivity() {
@@ -66,9 +63,9 @@ class Salas : AppCompatActivity() {
         // Al pulsar en el botón de descarga, se realiza una request a la url en la que está alojado
         // utilizando el DownloadManager. Se muestra un toast para indicar que la descarga ha comenzado
         descarga.setOnClickListener{
-            var download= this.getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
-            var PdfUri = Uri.parse("https://firebasestorage.googleapis.com/v0/b/pdf-downloader-f301f.appspot.com/o/UCA%20Field%20Booking.pdf?alt=media&token=ae62494c-fa57-4eb9-813e-5cc751874b88")
-            var getPdf = DownloadManager.Request(PdfUri)
+            val download= this.getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
+            val PdfUri = Uri.parse("https://firebasestorage.googleapis.com/v0/b/pdf-downloader-f301f.appspot.com/o/UCA%20Field%20Booking.pdf?alt=media&token=ae62494c-fa57-4eb9-813e-5cc751874b88")
+            val getPdf = DownloadManager.Request(PdfUri)
             getPdf.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
             download.enqueue(getPdf)
             Toast.makeText(this,"Descargando", Toast.LENGTH_LONG).show()

@@ -37,4 +37,23 @@
     <string name="entorno">El complejo deportivo UCA se encuentra en un entorno natural, rodeado de parques en los que poder hacer otras actividades distintas a las de las propias instalaciones.</string>
     <string name="transporte">Para acceder al complejo contamos con dos medios de transporte públicos principales: Las líneas de autobuses ofrecidas por el Consorcio de Transportes y las lineas de tren de Renfe cercanías.</string>
     <string name="direccion">El complejo deportivo se encuentra en C/ República Saharaui, 3, 11519 Puerto Real, Cádiz.\nSe situa junto a la Facultad de Ciencias y el Centro Andaluz de Estudios Marinos.</string>
+    <string name="tit_Local">Localización</string>
+    <string name="tit_Transporte">Transporte</string>
+    <string name="img_Accesos">Accesos al campus</string>
+    <string name="icono_lineas_autobuses">Icono lineas autobuses</string>
+    <string name="tit_Como_llegar">Cómo llegar</string>
+    <string name="logo_renfe">Logo Renfe Cercanías</string>
+    <string name="mapa_pistas">Mapa localización complejo deportivo</string>
+    <string name="tit_servicios">Servicios</string>
+    <string name="material">Material</string>
+    <string name="vestuarios">Vestuarios</string>
+    <string name="tit_tenis">Tenis</string>
+    <string name="taquillas">Taquillas</string>
+    <string name="tit_futbol">Fútbol</string>
+    <string name="campo_futbol">Campo de fútbol</string>
+    <string name="parking">Parking</string>
+    <string name="descarga">Descargar PDF</string>
+    <string name="animacion">Animación splash screen</string>
+    <string name="icon_menu">Icono menú</string>
+    <string name="tit_app_minus">UCA Field Booking</string>
 </resources>

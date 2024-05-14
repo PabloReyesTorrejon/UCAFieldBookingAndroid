@@ -9,14 +9,22 @@
     android:background="@color/background"
     tools:context=".Salas">
 
+    <!-- Scroll view para poder desplazarse por toda la vista -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <!-- Los elementos están posicionados linealmente -->
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
 
+        <!-- Se añade la barra superior -->
         <include layout="@layout/toolbar" />
 
+        <!-- Primera tarjeta -->
         <androidx.cardview.widget.CardView
             android:id="@+id/cardView_expandable1"
             android:layout_width="match_parent"
@@ -34,17 +42,20 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.183">
 
+            <!-- Se compone de dos elementos uno debajo del otro -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/cardBackground"
                 android:orientation="vertical">
 
+                <!-- Parte superior (Siempre visible) -->
                 <RelativeLayout
                     android:id="@+id/fixed_view1"
                     android:layout_width="match_parent"
                     android:layout_height="200dp">
 
+                    <!-- Imagen de tarjeta -->
                     <ImageView
                         android:id="@+id/cardImage1"
                         android:layout_width="match_parent"
@@ -53,6 +64,7 @@
                         android:scaleType="centerCrop"
                         android:src="@drawable/padel" />
 
+                    <!-- Título de la tarjeta -->
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -67,6 +79,7 @@
 
                 </RelativeLayout>
 
+                <!-- Parte inferior (Al principio oculta) -->
                 <RelativeLayout
                     android:id="@+id/expandable_view1"
                     android:layout_width="match_parent"
@@ -74,6 +87,7 @@
                     android:background="@color/background"
                     android:visibility="gone">
 
+                    <!-- Breve descripción -->
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -87,22 +101,25 @@
                         android:text="@string/datos1"
                         android:textSize="18sp" />
 
+                    <!-- Titulo Servicios -->
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/expandServ1"
                         android:layout_below="@+id/expandText1"
-                        android:layout_marginLeft="10dp"
-                        android:text="Servicios"
+                        android:layout_marginStart="10dp"
+                        android:text="@string/tit_servicios"
                         android:fontFamily="sans-serif-black"
                         android:textSize="20sp"/>
 
+                    <!-- Los iconos se colocan linealmente -->
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
                         android:layout_below="@+id/expandServ1">
 
+                        <!-- Icono 1 -->
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -111,12 +128,13 @@
                             android:layout_marginBottom="15dp"
                             android:layout_marginEnd="20dp"
                             android:fontFamily="sans-serif-black"
-                            android:text="Material"
-                            android:textSize="10sp"
+                            android:text="@string/material"
+                            android:textSize="11sp"
                             android:scaleX="1.5"
                             android:scaleY="1.5"
                             app:drawableTopCompat="@drawable/baseline_sports_baseball_24" />
 
+                        <!-- Icono 2 -->
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -125,8 +143,8 @@
                             android:layout_marginBottom="15dp"
                             android:layout_marginEnd="20dp"
                             android:fontFamily="sans-serif-black"
-                            android:text="Vestuarios"
-                            android:textSize="10sp"
+                            android:text="@string/vestuarios"
+                            android:textSize="11sp"
                             android:scaleX="1.5"
                             android:scaleY="1.5"
                             app:drawableTopCompat="@drawable/baseline_shower_24" />
@@ -184,7 +202,7 @@
                         android:layout_alignParentBottom="true"
                         android:fontFamily="sans-serif-black"
                         android:gravity="center"
-                        android:text="Tenis"
+                        android:text="@string/tit_tenis"
                         android:textSize="30sp" />
 
                 </RelativeLayout>
@@ -214,8 +232,8 @@
                         android:layout_height="wrap_content"
                         android:id="@+id/expandServ2"
                         android:layout_below="@+id/expandText2"
-                        android:layout_marginLeft="10dp"
-                        android:text="Servicios"
+                        android:layout_marginStart="10dp"
+                        android:text="@string/tit_servicios"
                         android:fontFamily="sans-serif-black"
                         android:textSize="20sp"/>
 
@@ -233,8 +251,8 @@
                             android:layout_marginBottom="15dp"
                             android:layout_marginEnd="20dp"
                             android:fontFamily="sans-serif-black"
-                            android:text="Material"
-                            android:textSize="10sp"
+                            android:text="@string/material"
+                            android:textSize="11sp"
                             android:scaleX="1.5"
                             android:scaleY="1.5"
                             app:drawableTopCompat="@drawable/baseline_sports_baseball_24" />
@@ -247,8 +265,8 @@
                             android:layout_marginBottom="15dp"
                             android:layout_marginEnd="20dp"
                             android:fontFamily="sans-serif-black"
-                            android:text="Vestuarios"
-                            android:textSize="10sp"
+                            android:text="@string/vestuarios"
+                            android:textSize="11sp"
                             android:scaleX="1.5"
                             android:scaleY="1.5"
                             app:drawableTopCompat="@drawable/baseline_shower_24" />
@@ -261,8 +279,8 @@
                             android:layout_marginBottom="15dp"
                             android:layout_marginEnd="20dp"
                             android:fontFamily="sans-serif-black"
-                            android:text="Taquillas"
-                            android:textSize="10sp"
+                            android:text="@string/taquillas"
+                            android:textSize="11sp"
                             android:scaleX="1.5"
                             android:scaleY="1.5"
                             app:drawableTopCompat="@drawable/baseline_lock_24" />
@@ -308,7 +326,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="130dp"
                         android:scaleType="centerCrop"
-                        android:src="@drawable/futbol" />
+                        android:src="@drawable/futbol"
+                        android:contentDescription="@string/campo_futbol"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -319,7 +338,7 @@
                         android:layout_alignParentBottom="true"
                         android:fontFamily="sans-serif-black"
                         android:gravity="center"
-                        android:text="Fútbol"
+                        android:text="@string/tit_futbol"
                         android:textSize="30sp" />
 
                 </RelativeLayout>
@@ -349,8 +368,8 @@
                         android:layout_height="wrap_content"
                         android:id="@+id/expandServ3"
                         android:layout_below="@+id/expandText3"
-                        android:layout_marginLeft="10dp"
-                        android:text="Servicios"
+                        android:layout_marginStart="10dp"
+                        android:text="@string/tit_servicios"
                         android:fontFamily="sans-serif-black"
                         android:textSize="20sp"/>
 
@@ -368,8 +387,8 @@
                             android:layout_marginBottom="15dp"
                             android:layout_marginEnd="20dp"
                             android:fontFamily="sans-serif-black"
-                            android:text="Parking"
-                            android:textSize="10sp"
+                            android:text="@string/parking"
+                            android:textSize="11sp"
                             android:scaleX="1.5"
                             android:scaleY="1.5"
                             app:drawableTopCompat="@drawable/baseline_local_parking_24" />
@@ -382,8 +401,8 @@
                             android:layout_marginBottom="15dp"
                             android:layout_marginEnd="20dp"
                             android:fontFamily="sans-serif-black"
-                            android:text="Vestuarios"
-                            android:textSize="10sp"
+                            android:text="@string/vestuarios"
+                            android:textSize="11sp"
                             android:scaleX="1.5"
                             android:scaleY="1.5"
                             app:drawableTopCompat="@drawable/baseline_shower_24" />
@@ -396,17 +415,23 @@
 
         </androidx.cardview.widget.CardView>
 
+        <!-- Botón de descarga -->
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/botonDescarga"
-            android:layout_margin="24dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginBottom="60dp"
             android:backgroundTint="@color/colorPrimary"
             android:textColor="@color/black"
             android:fontFamily="sans-serif-black"
-            android:text="Descargar PDF"/>
+            android:text="@string/descarga"/>
 
     </LinearLayout>
+
+    </ScrollView>
 
     <RelativeLayout
         android:layout_width="300dp"

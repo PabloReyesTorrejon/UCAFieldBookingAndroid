@@ -54,10 +54,12 @@ class Reservas : AppCompatActivity() {
         val toolbar: Toolbar = findViewById(R.id.my_toolbar)
         setSupportActionBar(toolbar)
 
+        // Se obtienen las referencias del los botones del Navigation Drawer
         salas = findViewById(R.id.boton_salas)
         vistaReservas = findViewById(R.id.boton_reservas)
         local = findViewById(R.id.boton_local)
 
+        // Referencia al Navigation Drawer y el botón del actionbar
         drawerLayout = findViewById(R.id.drawer_layout)
         toggle = ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
         drawerLayout.addDrawerListener(toggle)
@@ -92,6 +94,7 @@ class Reservas : AppCompatActivity() {
             }
         }
 
+        // Los botones del Drawer cambian de actividad
         salas.setOnClickListener{
             redirectActivity(this@Reservas, Salas::class.java)
         }
@@ -149,16 +152,14 @@ class Reservas : AppCompatActivity() {
         }
     }
 
-    fun openDrawer(drawerLayout: DrawerLayout) {
-        drawerLayout.openDrawer(GravityCompat.START)
-    }
-
+    // Si el drawer está abierto lo cierra
     fun closeDrawer(drawerlayout: DrawerLayout){
         if(drawerlayout.isDrawerOpen(GravityCompat.START)){
             drawerLayout.closeDrawer(GravityCompat.START)
         }
     }
 
+    // Abre la nueva actividad
     fun redirectActivity(activity: Activity, secondActivity: Class<*>) {
         val intent = Intent(activity, secondActivity)
         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
@@ -166,6 +167,7 @@ class Reservas : AppCompatActivity() {
         /*activity.finish()*/
     }
 
+    // Si se pulsa fuera del drawer, se cierra
     override fun onPause() {
         super.onPause()
         closeDrawer(drawerLayout)

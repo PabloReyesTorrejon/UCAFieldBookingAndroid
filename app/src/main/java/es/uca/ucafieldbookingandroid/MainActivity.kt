@@ -29,16 +29,19 @@ class MainActivity : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
 
+        // Se obtienen las referencias del los botones del Navigation Drawer
         drawerLayout = findViewById(R.id.drawerLayout)
         menu = findViewById(R.id.menu)
         salas = findViewById(R.id.boton_salas)
         reservas = findViewById(R.id.boton_reservas)
         local = findViewById(R.id.boton_local)
 
+        // El botón del actionbar abre el Navigation Drawer
         menu.setOnClickListener {
             openDrawer(drawerLayout)
         }
 
+        // Los botones del Drawer cambian de actividad
         salas.setOnClickListener{
             redirectActivity(this@MainActivity, Salas::class.java)
         }
@@ -52,16 +55,20 @@ class MainActivity : AppCompatActivity() {
         }
 
     }
+
+    // Función para abrir el Drawer
     fun openDrawer(drawerLayout: DrawerLayout) {
         drawerLayout.openDrawer(GravityCompat.START)
     }
 
+    // Si el drawer está abierto lo cierra
     fun closeDrawer(drawerlayout: DrawerLayout){
         if(drawerlayout.isDrawerOpen(GravityCompat.START)){
             drawerLayout.closeDrawer(GravityCompat.START)
         }
     }
 
+    // Abre la nueva actividad
     fun redirectActivity(activity: Activity, secondActivity: Class<*>) {
         val intent = Intent(activity, secondActivity)
         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
@@ -69,6 +76,7 @@ class MainActivity : AppCompatActivity() {
         /*activity.finish()*/
     }
 
+    // Si se pulsa fuera del drawer, se cierra
     override fun onPause() {
         super.onPause()
         closeDrawer(drawerLayout)

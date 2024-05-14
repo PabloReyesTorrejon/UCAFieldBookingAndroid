@@ -101,7 +101,7 @@ class Reservas : AppCompatActivity() {
         }
 
         local.setOnClickListener{
-            redirectActivity(this@Reservas, Salas::class.java)
+            redirectActivity(this@Reservas, Localizacion::class.java)
         }
     }
 

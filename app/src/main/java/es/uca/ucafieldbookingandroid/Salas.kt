@@ -88,7 +88,7 @@ class Salas : AppCompatActivity() {
         }
 
         local.setOnClickListener{
-            redirectActivity(this@Salas, Salas::class.java)
+            redirectActivity(this@Salas, Localizacion::class.java)
         }
     }
 

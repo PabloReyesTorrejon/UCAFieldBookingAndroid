@@ -34,4 +34,7 @@
     <string name="drawer_reservas">Reservas</string>
     <string name="drawer_salas">Salas</string>
     <string name="drawer_local">Localización</string>
+    <string name="entorno">El complejo deportivo UCA se encuentra en un entorno natural, rodeado de parques en los que poder hacer otras actividades distintas a las de las propias instalaciones.</string>
+    <string name="transporte">Para acceder al complejo contamos con dos medios de transporte públicos principales: Las líneas de autobuses ofrecidas por el Consorcio de Transportes y las lineas de tren de Renfe cercanías.</string>
+    <string name="direccion">El complejo deportivo se encuentra en C/ República Saharaui, 3, 11519 Puerto Real, Cádiz.\nSe situa junto a la Facultad de Ciencias y el Centro Andaluz de Estudios Marinos.</string>
 </resources>

@@ -100,7 +100,7 @@ class Reservas : AppCompatActivity() {
         }
 
         vistaReservas.setOnClickListener{
-            recreate()
+            redirectActivity(this@Reservas, Reservas::class.java)
         }
 
         local.setOnClickListener{
@@ -164,7 +164,7 @@ class Reservas : AppCompatActivity() {
         val intent = Intent(activity, secondActivity)
         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
         activity.startActivity(intent)
-        /*activity.finish()*/
+        activity.finish()
     }
 
     // Si se pulsa fuera del drawer, se cierra

@@ -85,7 +85,7 @@ class Salas : AppCompatActivity() {
 
         // Los botones del Drawer cambian de actividad
         salas.setOnClickListener{
-            recreate()
+            redirectActivity(this@Salas, Salas::class.java)
         }
 
         reservas.setOnClickListener{
@@ -114,6 +114,7 @@ class Salas : AppCompatActivity() {
         val intent = Intent(activity, secondActivity)
         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
         activity.startActivity(intent)
+        activity.finish()
     }
 
     // Si se pulsa fuera del drawer, se cierra

@@ -59,7 +59,7 @@ class Localizacion : AppCompatActivity() {
         }
 
         local.setOnClickListener{
-            recreate()
+            redirectActivity(this@Localizacion, Localizacion::class.java)
         }
 
     }
@@ -81,6 +81,7 @@ class Localizacion : AppCompatActivity() {
         val intent = Intent(activity, secondActivity)
         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
         activity.startActivity(intent)
+        activity.finish()
     }
 
     // Si se pulsa fuera del drawer, se cierra

@@ -8,10 +8,12 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.TextView
+import android.widget.Toast
 import androidx.core.content.ContextCompat.startActivity
 import androidx.lifecycle.LifecycleCoroutineScope
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 // Define la clase ReservaAdapter y extiende la clase RecyclerView.Adapter<ReservaAdapter.ReservaViewHolder>. Esta clase maneja el
@@ -60,6 +62,10 @@ class ReservaAdapter(
                         // Eliminar la reserva de la lista y notificar al adaptador
                         reservas.removeAt(adapterPosition)
                         notifyItemRemoved(adapterPosition)
+                        // Mostrar un Toast
+                        launch(Dispatchers.Main) {
+                            Toast.makeText(it.context, "Reserva eliminada correctamente", Toast.LENGTH_SHORT).show()
+                        }
                     } catch (e: Exception) {
                         // Manejo de errores
                     }

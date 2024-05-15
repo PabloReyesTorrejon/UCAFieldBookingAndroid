@@ -56,4 +56,10 @@
     <string name="animacion">Animación splash screen</string>
     <string name="icon_menu">Icono menú</string>
     <string name="tit_app_minus">UCA Field Booking</string>
+    <string name="tituloDeporte">Selecciona un deporte</string>
+    <string-array name="opciones_deporte">
+        <item>Fútbol</item>
+        <item>Pádel</item>
+        <item>Tenis</item>
+    </string-array>
 </resources>

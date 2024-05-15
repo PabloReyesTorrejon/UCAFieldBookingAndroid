@@ -36,15 +36,23 @@
             android:inputType="text" />
 
 
-        <EditText
-            android:id="@+id/editTextDeporte"
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/textViewDeporte"
+            android:fontFamily="sans-serif-medium"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="32dp"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
-            android:hint="@string/deporte"
-            android:inputType="text" />
+            android:text="@string/tituloDeporte"
+            android:textSize="24sp"
+            android:textColor="@color/black" />
+        <Spinner
+            android:id="@+id/editTextDeporte"
+            android:layout_width="381dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:entries="@array/opciones_deporte" />
 
         <EditText
             android:id="@+id/editTextEmail"

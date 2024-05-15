@@ -10,6 +10,7 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.Button
 import android.widget.DatePicker
 import android.widget.EditText
+import android.widget.Spinner
 import android.widget.TextView
 import android.widget.TimePicker
 import android.widget.Toast
@@ -44,7 +45,7 @@ class EditarReserva : AppCompatActivity() {
         setContentView(R.layout.activity_editar_reserva)
         val buttonPut = findViewById<Button>(R.id.buttonPut)
         val editTextNombre = findViewById<EditText>(R.id.editTextNombre)
-        val editTextDeporte = findViewById<EditText>(R.id.editTextDeporte)
+        val editTextDeporte = findViewById<Spinner>(R.id.editTextDeporte)
         val editTextemail = findViewById<EditText>(R.id.editTextEmail)
         val dpFecha = findViewById<DatePicker>(R.id.dpFecha)
         val tpHora = findViewById<TimePicker>(R.id.tpFecha)
@@ -53,7 +54,7 @@ class EditarReserva : AppCompatActivity() {
 
         // Guarda los valores iniciales de los campos
         nombreInicial = editTextNombre.text.toString()
-        deporteInicial = editTextDeporte.text.toString()
+        deporteInicial = editTextDeporte.selectedItem.toString()
         emailInicial = editTextemail.text.toString()
         asistentesInicial = editTextAsistentes.text.toString()
         comentarioInicial = editTextComentario.text.toString()
@@ -62,7 +63,7 @@ class EditarReserva : AppCompatActivity() {
 
         buttonPut.setOnClickListener {
             val nombre = editTextNombre.text.toString()
-            val deporte = editTextDeporte.text.toString()
+            val deporte = editTextDeporte.selectedItem.toString()
             val email = editTextemail.text.toString()
             val asistentes = editTextAsistentes.text.toString()
             val comentario = editTextComentario.text.toString()
@@ -73,6 +74,19 @@ class EditarReserva : AppCompatActivity() {
             val selectedTime = Calendar.getInstance()
             selectedTime.set(Calendar.HOUR_OF_DAY, tpHora.hour)
             selectedTime.set(Calendar.MINUTE, tpHora.minute)
+
+            // Comprobar si la fecha seleccionada es anterior a la fecha actual
+            val currentDate = Calendar.getInstance()
+            if (selectedDate.before(currentDate)) {
+                Toast.makeText(this, "No puedes seleccionar una fecha anterior a la actual", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
+            // Comprobar si la hora seleccionada está fuera del rango permitido (8:00 - 21:00)
+            if (selectedTime.get(Calendar.HOUR_OF_DAY) < 8 || selectedTime.get(Calendar.HOUR_OF_DAY) > 21) {
+                Toast.makeText(this, "La hora debe estar entre las 8:00 y las 21:00", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
 
             // Formatear la fecha y hora seleccionadas como cadenas de texto
             val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())

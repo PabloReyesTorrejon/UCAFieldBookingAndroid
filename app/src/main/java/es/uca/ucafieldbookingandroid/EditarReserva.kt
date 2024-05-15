@@ -78,13 +78,13 @@ class EditarReserva : AppCompatActivity() {
             // Comprobar si la fecha seleccionada es anterior a la fecha actual
             val currentDate = Calendar.getInstance()
             if (selectedDate.before(currentDate)) {
-                Toast.makeText(this, "No puedes seleccionar una fecha anterior a la actual", Toast.LENGTH_SHORT).show()
+                Snackbar.make(findViewById(android.R.id.content), "No puedes seleccionar una fecha anterior a la actual", Snackbar.LENGTH_LONG).show()
                 return@setOnClickListener
             }
 
             // Comprobar si la hora seleccionada está fuera del rango permitido (8:00 - 21:00)
             if (selectedTime.get(Calendar.HOUR_OF_DAY) < 8 || selectedTime.get(Calendar.HOUR_OF_DAY) > 21) {
-                Toast.makeText(this, "La hora debe estar entre las 8:00 y las 21:00", Toast.LENGTH_SHORT).show()
+                Snackbar.make(findViewById(android.R.id.content), "La hora debe estar entre las 8:00 y las 21:00", Snackbar.LENGTH_LONG).show()
                 return@setOnClickListener
             }
 

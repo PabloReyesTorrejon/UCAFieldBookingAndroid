@@ -24,11 +24,11 @@
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="56dp"
             android:layout_marginTop="36dp"
             android:fontFamily="@font/poppins_bold"
             android:text="@string/home_title"
             android:textSize="30sp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/include" />
 
@@ -38,27 +38,27 @@
             android:layout_width="115dp"
             android:layout_height="109dp"
             android:layout_gravity="center"
-            android:layout_marginStart="148dp"
             android:layout_marginTop="16dp"
+            android:contentDescription="@string/logo_app"
             android:src="@mipmap/ic_launcher"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView2"
-            app:srcCompat="@mipmap/ic_launcher_foreground"
-            android:contentDescription="@string/logo_app" />
+            app:srcCompat="@mipmap/ic_launcher_foreground" />
 
         <!-- Descripción de la aplicación -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="0dp"
             android:layout_marginTop="84dp"
+            android:fontFamily="@font/poppins"
             android:paddingStart="15dp"
             android:paddingEnd="15dp"
-            android:fontFamily="@font/poppins"
             android:text="@string/welcome"
             android:textAlignment="center"
-            android:textSize="18sp"
             android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
@@ -66,13 +66,13 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="132dp"
-            android:layout_marginBottom="108dp"
+            android:layout_marginBottom="112dp"
             android:text="@string/Creditos"
             android:textAlignment="center"
             android:textColor="@color/black"
             android:textSize="13sp"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
